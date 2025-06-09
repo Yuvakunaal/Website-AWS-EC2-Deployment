@@ -88,13 +88,13 @@ mkdir temp
 cd temp
 
 # Download zip file from GitHub or any URL
-wget <downloadable-zip-url>
+wget https://github.com/Yuvakunaal/Website-AWS-EC2-Deployment/raw/main/seasonal-crop-guide.zip
 
 # Extract contents of the zip file
-unzip filename.zip
+unzip seasonal-crop-guide.zip
 
 # Navigate into extracted folder
-cd filename
+cd seasonal-crop-guide
 
 # List all files by last modified time
 ls -lrt
