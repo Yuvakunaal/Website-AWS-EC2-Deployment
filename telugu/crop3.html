@@ -1,0 +1,713 @@
+<!-- Telugu -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="../assets/plant.png">
+  <title>పంటలు</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        background-color: #03A9F4;
+      }
+      @keyframes slideDown {
+        0% {
+          transform: translateY(-200%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideUp {
+        0% {
+          transform: translateY(200%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(-135deg, #c850c0, #4158d0);
+        clip-path: circle(25px at calc(100% - 45px) 45px);
+        transition: all 0.3s ease-in-out;
+      }
+  
+      #active:checked~.wrapper {
+        clip-path: circle(75%);
+      }
+  
+      .menu-btn {
+        position: fixed;
+      z-index: 2;
+      right: 20px;
+      top: 20px;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      background: linear-gradient(-135deg, #c850c0, #4158d0);
+      transition: all 0.3s ease-in-out;
+      }
+  
+      #active:checked~.menu-btn {
+        background: #fff;
+        color: #4158d0;
+      }
+  
+      #active:checked~.menu-btn i:before {
+        content: "🌾";
+      }
+  
+      .wrapper ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+      }
+  
+      .wrapper ul li {
+        margin: 15px 0;
+      }
+  
+      .wrapper ul li a {
+        color: none;
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: 500;
+        padding: 5px 30px;
+        color: #fff;
+        position: relative;
+        line-height: 50px;
+        transition: all 0.3s ease;
+      }
+  
+      .wrapper ul li a:after {
+        position: absolute;
+        content: "";
+        background: #fff;
+        width: 100%;
+        height: 50px;
+        left: 0;
+        border-radius: 50px;
+        transform: scaleY(0);
+        z-index: -1;
+        transition: transform 0.3s ease;
+      }
+  
+      .wrapper ul li a:hover:after {
+        transform: scaleY(1);
+      }
+  
+      .wrapper ul li a:hover {
+        color: #4158d0;
+      }
+  
+      input[type="checkbox"] {
+        display: none;
+      }
+  
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        text-align: center;
+        width: 100%;
+        color: #202020;
+      }
+      .cover {
+        position: relative;
+        padding: 0px 30px;
+        margin-top: 100px;
+        animation : slideUp 1s ease;
+    }
+    
+    .left {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .right {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .scroll-images {
+        position: relative;
+        width: 100%;
+        padding: 40px 0px;
+        height: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 250px;
+        height: 200px;
+        padding: 0px 15px;
+        margin: 1px 10px;
+        border: 1px solid #f1f1f1;
+        overflow: hidden;
+        -webkit-box-shadow: 0px 0px 15px 2px rgb(0 0 0 / 10%);;
+        box-shadow: 0px 0px 15px 2px rgb(0 0 0 / 10%);;
+    }
+    
+    .child img:not(.crop), .child > svg {
+        position: absolute;
+        margin-top: -195px;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        background: #03A9F4;
+    }
+    
+    .scroll-images::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+        background-color: #aaa;
+    }
+    
+    .scroll-images::-webkit-scrollbar-thumb {
+        background-color: black;
+    }
+    
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 25px;
+    }
+    .h{
+      animation: slideDown  1s ease;
+    }
+    @media (max-width: 768px) {
+      .wrapper {
+        width: 80%;
+    }
+
+    .menu-btn {
+        right: 10px;
+        top: 10px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+
+    .wrapper ul li a {
+        font-size: 24px;
+        padding: 5px 20px;
+    }
+
+    .child {
+        min-width: 200px;
+        height: 150px;
+    }
+
+    .child img:not(.crop),
+    .child > svg {
+        margin-top: -145px;
+        width: 60px;
+        height: 60px;
+    }
+  }
+  @font-face {
+    font-family: 'tpsr';
+    src: url('../custom-font/tpsr.otf') format('truetype');
+  }
+  .content .h{
+    font-family:'tpsr';
+    font-size: 60px;
+  }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="active">
+  <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+  <div class="wrapper">
+    <ul>
+      <li><a href="home3.html">హోమ్</a></li>
+      <li><a href="crop3.html">పంటలు</a></li>
+      <li><a href="suggestion3.html">సూచన</a></li>
+      <li><a href="gossip3.html">పంటల కబుర్లు</a></li>
+      <li><a href="feedback3.html">అభిప్రాయం</a></li>
+      <li><a href="../index.html">భాష</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1 style="background-color :#c94040 ; -webkit-background-clip: text; color: transparent;" class="h">పంటలు</h1>
+
+    <div class="cover">
+        <button class="left" onclick="leftScroll()">
+          <i class="fas fa-angle-double-left"></i>
+        </button>
+        <div class="scroll-images">
+          <!-- 1 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="1.5px" fill="black">అల్ఫోన్సో మామిడికాయలు</text>
+            </svg>
+            <img src="../assets/Alphonso Mangoes.jpeg" alt="Alphonso Mangoes" class="crop">
+          </div>
+
+          <!-- 2 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">యాపిల్స్</text>
+            </svg>
+            <img src="../assets/Apples.jpeg" alt="Apples" class="crop">
+          </div>
+
+          <!-- 3 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="1.5px" fill="black">అరెకానట్ పువ్వులు</text>
+            </svg>
+            <img src="../assets/Arecanut flowers.jpeg" alt="Arecanut flowers" class="crop">
+          </div>
+
+          <!-- 4 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="1.5px" fill="black">అరెకనట్ ఆకులు</text>
+            </svg>
+            <img src="../assets/Arecanut leaves.jpeg" alt="Arecanut leaves" class="crop">
+          </div>
+
+          <!-- 5 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">బజ్రా</text>
+            </svg>
+            <img src="../assets/Bajra (Pearl millet).jpeg" alt="bajra" class="crop">
+          </div>
+
+          <!-- 6 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">అరటిపండు</text>
+            </svg>
+            <img src="../assets/Bananas.jpeg" alt="banana" class="crop">
+          </div>
+
+          <!-- 7 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">బీన్స్</text>
+            </svg>
+            <img src="../assets/Bean.jpeg" alt="bean" class="crop">
+          </div>
+
+          <!-- 8 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">తమలపాకులు</text>
+            </svg>
+            <img src="../assets/Betel nuts (Areca nuts).jpeg" alt="Betel nuts (Areca nuts)" class="crop">
+          </div>
+
+          <!-- 9 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">కాకరకాయ</text>
+            </svg>
+            <img src="../assets/Bitter gourd.jpeg" alt="Bitter gourd" class="crop">
+          </div>
+
+          <!-- 10 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">నల్ల మిరియాలు</text>
+            </svg>
+            <img src="../assets/Black pepper.jpeg" alt="Black pepper" class="crop">
+          </div>
+
+          <!-- 11 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">సీసా పొట్లకాయ</text>
+            </svg>
+            <img src="../assets/Bottle gourd.jpeg" alt="Bottle gourd" class="crop">
+          </div>
+
+          <!-- 12 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">వంకాయ</text>
+            </svg>
+            <img src="../assets/Brinjal (Eggplant).jpeg" alt="Brinjal" class="crop">
+          </div>
+
+          <!-- 13 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">క్యాబేజీ</text>
+            </svg>
+            <img src="../assets/Cabbage.jpeg" alt="Cabbage" class="crop">
+          </div>
+
+          <!-- 14 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">క్యాప్సికమ్</text>
+            </svg>
+            <img src="../assets/Capsicum.jpeg" alt="Capsicum" class="crop">
+          </div>
+          
+          <!-- 15 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">కారెట్</text>
+            </svg>
+            <img src="../assets/Carrot.jpeg" alt="Carrot" class="crop">
+          </div>
+
+          <!-- 16 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">జీడిపప్పు ఆపిల్స్</text>
+            </svg>
+            <img src="../assets/Cashew apples.jpeg" alt="Cashew apples" class="crop">
+          </div>
+
+          <!-- 17 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">జీడిపప్పు గింజలు</text>
+            </svg>
+            <img src="../assets/Cashew kernels.jpeg" alt="Cashew kernels" class="crop">
+          </div>
+
+          <!-- 18 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">జీడిపప్పు</text>
+            </svg>
+            <img src="../assets/Cashewnuts.jpeg" alt="Cashew nuts" class="crop">
+          </div>
+
+          <!-- 19 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">కాలీఫ్లవర్</text>
+            </svg>
+            <img src="../assets/Cauliflower.jpeg" alt="Cauliflower" class="crop">
+          </div>
+
+          <!-- 20 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">చెర్రీస్</text>
+            </svg>
+            <img src="../assets/Cherries.jpeg" alt="Cherries" class="crop">
+          </div>
+
+          <!-- 21 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">చానా</text>
+            </svg>
+            <img src="../assets/Chickpeas (Chana).png" alt="Chana" class="crop">
+          </div>
+
+          <!-- 22 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">మిరపకాయలు</text>
+            </svg>
+            <img src="../assets/Chillis.jpeg" alt="Chillis" class="crop">
+          </div>
+
+          <!-- 23 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">కొబ్బరికాయలు</text>
+            </svg>
+            <img src="../assets/Coconuts.jpeg" alt="Coconuts" class="crop">
+          </div>
+
+          <!-- 24 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">పత్తి</text>
+            </svg>
+            <img src="../assets/Cotton.jpeg" alt="Cotton" class="crop">
+          </div>
+
+          <!-- 25 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">ద్రాక్ష</text>
+            </svg>
+            <img src="../assets/Grapes.jpeg" alt="Grapes" class="crop">
+          </div>
+
+          <!-- 26 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">వేరుశనగ</text>
+            </svg>
+            <img src="../assets/groundnut.avif" alt="groundnut" class="crop">
+          </div>
+
+          <!-- 27 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">జామపండ్లు</text>
+            </svg>
+            <img src="../assets/Guavas.jpeg" alt="Guavas" class="crop">
+          </div>
+
+          <!-- 28 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.4px" fill="black">పప్పు</text>
+            </svg>
+            <img src="../assets/Lentils.jpeg" alt="Lentils" class="crop">
+          </div>
+
+          <!-- 29 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">మొక్కజొన్న</text>
+            </svg>
+            <img src="../assets/Maize.jpeg" alt="Maize" class="crop">
+          </div>
+
+          <!-- 30 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">మామిడి</text>
+            </svg>
+            <img src="../assets/Mango.jpeg" alt="Mango" class="crop">
+          </div>
+
+          <!-- 31 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.4px" fill="black">ఆవాలు</text>
+            </svg>
+            <img src="../assets/Mustard.jpg" alt="Mustard" class="crop">
+          </div>
+
+          <!-- 32 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.2px" fill="black">బెండ కాయ</text>
+            </svg>
+            <img src="../assets/Okra (Ladyfinger).jpeg" alt="Ladyfinger" class="crop">
+          </div>
+
+          <!-- 33 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">ఉల్లిపాయ</text>
+            </svg>
+            <img src="../assets/Onion.jpeg" alt="Onion" class="crop">
+          </div>
+
+          <!-- 34 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">నారింజలు</text>
+            </svg>
+            <img src="../assets/Oranges.jpeg" alt="Oranges" class="crop">
+          </div>
+
+          <!-- 35 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">బొప్పాయి</text>
+            </svg>
+            <img src="../assets/Papaya.jpeg" alt="Papaya" class="crop">
+          </div>
+
+          <!-- 36 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">బటానీలు</text>
+            </svg>
+            <img src="../assets/Peas.jpeg" alt="Peas" class="crop">
+          </div>
+
+          <!-- 37 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">దానిమ్మ</text>
+            </svg>
+            <img src="../assets/Pomegranate.png" alt="Pomegranate" class="crop">
+          </div>
+
+          <!-- 38 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">బంగాళదుంప</text>
+            </svg>
+            <img src="../assets/potato.jpeg" alt="potato" class="crop">
+          </div>
+          
+          <!-- 39 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">అన్నం</text>
+            </svg>
+            <img src="../assets/Rice.jpeg" alt="Rice" class="crop">
+          </div>
+
+          <!-- 40 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.2px" fill="black">పొట్లకాయ</text>
+            </svg>
+            <img src="../assets/Ridge gourd.jpg" alt="Ridge gourd" class="crop">
+          </div>
+
+          <!-- 41 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">జోవర్</text>
+            </svg>
+            <img src="../assets/Sorghum (Jowar).jpeg" alt="Jowar" class="crop">
+          </div>
+
+          <!-- 42 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">సోయాబీన్స్</text>
+            </svg>
+            <img src="../assets/Soybeans.jpeg" alt="Soybeans" class="crop">
+          </div>
+
+          <!-- 43 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">చెరుకుగడ</text>
+            </svg>
+            <img src="../assets/Sugarcane.jpeg" alt="Sugarcane" class="crop">
+          </div>
+
+          <!-- 44 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">సూర్య పుష్పం</text>
+            </svg>
+            <img src="../assets/Sunflower.png" alt="Sunflower" class="crop">
+          </div>
+
+          <!-- 45 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.1px" fill="black">టమోటా</text>
+            </svg>
+            <img src="../assets/Tomatoes.jpeg" alt="Tomatoes" class="crop">
+          </div>
+
+          <!-- 46 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.3px" fill="black">పసుపు</text>
+            </svg>
+            <img src="../assets/Turmericc.jpeg" alt="Turmeric" class="crop">
+          </div>
+
+          <!-- 47 -->
+          <div class="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill border" viewBox="0 0 16 16" style="border: 1px solid white; border-radius: 50%;">
+              <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="2.5px" fill="black">గోధుమ</text>
+            </svg>
+            <img src="../assets/Wheat.jpeg" alt="Wheat" class="crop">
+          </div>
+
+        </div>
+        <button class="right" onclick="rightScroll()">
+          <i class="fas fa-angle-double-right"></i>
+        </button>
+      </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const scrollImages = document.querySelector(".scroll-images");
+        const scrollLength = scrollImages.scrollWidth - scrollImages.clientWidth;
+        const leftButton = document.querySelector(".left");
+        const rightButton = document.querySelector(".right");
+  
+        function checkScroll() {
+          const currentScroll = scrollImages.scrollLeft;
+          if (currentScroll === 0) {
+            leftButton.setAttribute("disabled", "true");
+            rightButton.removeAttribute("disabled");
+          } else if (currentScroll === scrollLength) {
+            rightButton.setAttribute("disabled", "true");
+            leftButton.removeAttribute("disabled");
+          } else {
+            leftButton.removeAttribute("disabled");
+            rightButton.removeAttribute("disabled");
+          }
+        }
+  
+        scrollImages.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+        checkScroll();
+  
+        function leftScroll() {
+          scrollImages.scrollBy({
+            left: -300,
+            behavior: "smooth"
+          });
+        }
+  
+        function rightScroll() {
+          scrollImages.scrollBy({
+            left: 300,
+            behavior: "smooth"
+          });
+        }
+  
+        leftButton.addEventListener("click", leftScroll);
+        rightButton.addEventListener("click", rightScroll);
+      });
+      function speakLang() {
+        var welcomeMessage = new SpeechSynthesisUtterance();
+        welcomeMessage.text = "Pantalu";
+        welcomeMessage.lang = "ge";
+        window.speechSynthesis.speak(welcomeMessage);
+      }
+      // Call the function when the page is reloaded
+      window.addEventListener('load', speakLang);
+  </script>
+</body>
+
+</html>

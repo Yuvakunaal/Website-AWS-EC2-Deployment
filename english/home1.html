@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../assets/plant.png" />
+    <title>Seasonal Crop Guide</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-image: url("../assets/bg.jpg");
+        background-size: cover; /* Ensure the background image covers the entire viewport */
+        background-repeat: no-repeat;
+        background-position: center; /* Center the background image */
+      }
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInTop {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+      .wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(-135deg, #c850c0, #4158d0);
+        clip-path: circle(25px at calc(100% - 45px) 45px);
+        transition: all 0.3s ease-in-out;
+      }
+
+      #active:checked ~ .wrapper {
+        clip-path: circle(75%);
+      }
+
+      .menu-btn {
+        position: fixed;
+        z-index: 2;
+        right: 20px;
+        top: 20px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        background: linear-gradient(-135deg, #c850c0, #4158d0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      #active:checked ~ .menu-btn {
+        background: #fff;
+        color: #4158d0;
+      }
+
+      #active:checked ~ .menu-btn i:before {
+        content: "🌾";
+      }
+
+      .wrapper ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+      }
+
+      .wrapper ul li {
+        margin: 15px 0;
+      }
+
+      .wrapper ul li a {
+        color: none;
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: 500;
+        padding: 5px 30px;
+        color: #fff;
+        position: relative;
+        line-height: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .wrapper ul li a:after {
+        position: absolute;
+        content: "";
+        background: #fff;
+        width: 100%;
+        height: 50px;
+        left: 0;
+        border-radius: 50px;
+        transform: scaleY(0);
+        z-index: -1;
+        transition: transform 0.3s ease;
+      }
+
+      .wrapper ul li a:hover:after {
+        transform: scaleY(1);
+      }
+
+      .wrapper ul li a:hover {
+        color: #4158d0;
+      }
+      .wrapper ul li a {
+        font-size: 24px;
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      @font-face {
+        font-family: "aw";
+        src: url('../custom-font/aw.ttf') format("truetype");
+      }
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        text-align: center;
+        width: 100%;
+        color: rgb(220, 125, 91);
+        position: relative;
+        font-size: 8vw;
+        display: inline-block;
+        font-family: "aw";
+      }
+      .seasonal {
+        animation: slideInLeft 1s ease-out forwards;
+      }
+
+      .crop {
+        animation: slideInTop 1s ease-out forwards;
+      }
+
+      .guide {
+        animation: slideInRight 1s ease-out forwards;
+      }
+      .main .input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40vw;
+        height: 50px;
+        border-radius: 20px;
+        background: rgb(202 253 255 / 50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="checkbox" id="active" />
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+      <ul>
+        <li><a href="home1.html">Home</a></li>
+        <li><a href="crop1.html">Crops</a></li>
+        <li><a href="suggestion1.html">Suggestion</a></li>
+        <li><a href="gossip1.html">Crop Gossip</a></li>
+        <li><a href="feedback1.html">Feedback</a></li>
+        <li><a href="../index.html">Language</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="glitch-word seasonal" data-text="Seasonal">Seasonal</div>
+      <div class="glitch-word crop" data-text="Crop">Crop</div>
+      <div class="glitch-word guide" data-text="Guide">Guide</div>
+    </div>
+    <script>
+      function speakLang() {
+        var welcomeMessage = new SpeechSynthesisUtterance();
+        welcomeMessage.text = "Welcome to Seasonal crop guide";
+        welcomeMessage.lang = "en";
+        window.speechSynthesis.speak(welcomeMessage);
+      }
+      // Call the function when the page is reloaded
+      window.addEventListener("load", speakLang);
+    </script>
+  </body>
+</html>

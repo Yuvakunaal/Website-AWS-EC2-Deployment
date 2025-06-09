@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/plant.png">
+    <title>Crop Gossip</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+          }
+          body {
+            background-image: url('../assets/bgbg.jpg');
+            background-size: cover; /* Ensure the background image covers the entire viewport */
+            background-repeat: no-repeat;
+            background-position: center; /* Center the background image */
+            background-attachment: fixed;
+          }
+          .wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(-135deg, #c850c0, #4158d0);
+            clip-path: circle(25px at calc(100% - 45px) 45px);
+            transition: all 0.3s ease-in-out;
+          }
+      
+          #active:checked~.wrapper {
+            clip-path: circle(75%);
+          }
+      
+          .menu-btn {
+            position: fixed;
+            z-index: 2;
+            right: 20px;
+            top: 20px;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            background: linear-gradient(-135deg, #c850c0, #4158d0);
+            transition: all 0.3s ease-in-out;
+          }
+      
+          #active:checked~.menu-btn {
+            background: #fff;
+            color: #4158d0;
+          }
+      
+          #active:checked~.menu-btn i:before {
+            content: "🌾";
+          }
+      
+          .wrapper ul {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            list-style: none;
+            text-align: center;
+          }
+      
+          .wrapper ul li {
+            margin: 15px 0;
+          }
+      
+          .wrapper ul li a {
+            color: none;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 500;
+            padding: 5px 30px;
+            color: #fff;
+            position: relative;
+            line-height: 50px;
+            transition: all 0.3s ease;
+          }
+      
+          .wrapper ul li a:after {
+            position: absolute;
+            content: "";
+            background: #fff;
+            width: 100%;
+            height: 50px;
+            left: 0;
+            border-radius: 50px;
+            transform: scaleY(0);
+            z-index: -1;
+            transition: transform 0.3s ease;
+          }
+      
+          .wrapper ul li a:hover:after {
+            transform: scaleY(1);
+          }
+      
+          .wrapper ul li a:hover {
+            color: #4158d0;
+          }
+          .wrapper ul li a {
+            font-size: 24px;
+          }
+          input[type="checkbox"] {
+            display: none;
+          }
+
+        .chat-container {
+            max-width: 65%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 3px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: none; /* Hide messages by default */
+        }
+
+        .thought {
+            font-style: italic;
+            color: #666;
+        }
+
+        .left .message-inner {
+            background-color: #f4ea77;
+            border-radius: 10px 10px 10px 0;
+            padding: 10px;
+            margin-left: 20px;
+            clear: both;
+            float: left;
+            max-width: 70%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .right .message-inner {
+            background-color: #84cdeb;
+            border-radius: 10px 10px 0 10px;
+            padding: 10px;
+            margin-right: 20px;
+            clear: both;
+            float: right;
+            max-width: 70%;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        @font-face {
+            font-family: 'ist';
+            src: url('../custom-font/Info Story.otf') format('truetype');
+          }
+        h2{
+            text-align: center;
+            font-family: 'ist';
+            font-size: 31px;
+        }
+    </style>
+</head>
+<body>
+<input type="checkbox" id="active">
+  <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+  <div class="wrapper">
+    <ul>
+      <li><a href="home1.html">Home</a></li>
+      <li><a href="crop1.html">Crops</a></li>
+      <li><a href="suggestion1.html">Suggestion</a></li>
+      <li><a href="gossip1.html">Crop Gossip</a></li>
+      <li><a href="feedback1.html">Feedback</a></li>
+      <li><a href="../index.html">Language</a></li>
+    </ul>
+  </div>
+  <h2>Crops gossips</h2>
+    <div class="chat-container">
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Alphonso Mangoes</span>
+                <span class="thought">💬 "The Alphonso Mangoes are whispering about how the Apples are planning to steal their spotlight by claiming to be the king of fruits."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Apples</span>
+                <span class="thought">💬 "Did you hear? The Apples are spreading rumors about the Arecanut flowers, saying they're secretly jealous of their vibrant colors."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Arecanut flowers</span>
+                <span class="thought">💬 "The Arecanut flowers have been gossiping about the Arecanut leaves, claiming they're hogging all the sunlight and leaving them in the shade."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Arecanut leaves</span>
+                <span class="thought">💬 "There's gossip going around that the Arecanut leaves are plotting to overthrow the Bajra, accusing them of overshadowing their beauty with their towering height."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Bajra</span>
+                <span class="thought">💬 "The Bajra is buzzing with gossip about the Banana plantation, suggesting that they're planning to invade their territory and steal their nutrients."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Banana</span>
+                <span class="thought">💬 "The Banana plantation is abuzz with gossip about the beans, claiming they're secretly plotting to climb higher and overshadow their lush foliage."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Beans</span>
+                <span class="thought">💬 "Rumor has it that the Beans are spreading gossip about the Betel nuts, accusing them of being too bitter and not contributing enough to the garden community."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Betel nuts</span>
+                <span class="thought">💬 "The Betel nuts are whispering about the bitter gourd, claiming they're planning to spread their bitterness to other crops and ruin the garden's harmony."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Bitter gourd</span>
+                <span class="thought">💬 "The bitter gourd has been gossiping about the Black pepper, saying they're too spicy and stealing all the attention from milder crops."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Black pepper</span>
+                <span class="thought">💬 "The Black pepper is stirring up gossip about the Bottle gourd, suggesting they're secretly plotting to take over the garden with their rapid growth."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Bottle gourd</span>
+                <span class="thought">💬 "The Bottle gourd is spreading rumors about the Brinjal, saying they're envious of their versatility in recipes and popularity among gardeners."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Brinjal</span>
+                <span class="thought">💬 "The Brinjal is whispering about the Cabbage, claiming they're secretly planning to form a coalition against them and dominate the garden."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Cabbage</span>
+                <span class="thought">💬 "Did you hear? The Cabbage is gossiping about the Capsicum, suggesting they're secretly plotting to spice things up and create chaos in the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Capsicum</span>
+                <span class="thought">💬 "The Capsicum is stirring up gossip about the Carrot, claiming they're too orange and stealing attention away from the vibrant colors of other crops."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Carrot</span>
+                <span class="thought">💬 "There's gossip going around that the Carrot is plotting with the Cashew apples, accusing them of being too sweet and causing jealousy among other crops."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Cashew apples</span>
+                <span class="thought">💬 "The Cashew apples are whispering about the Cashew kernels, suggesting they're secretly hoarding all the nutrients and leaving them with nothing but sweetness."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Cashew kernels</span>
+                <span class="thought">💬 "Rumor has it that the Cashew kernels are gossiping about the Cashew nuts, claiming they're planning to crack jokes about their size and make them feel small."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Cashew nuts</span>
+                <span class="thought">💬 "The Cashew nuts are spreading gossip about the Cauliflower, accusing them of being too bland and lacking the flavor to spice up the garden."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Cauliflower</span>
+                <span class="thought">💬 "Did you hear? The Cauliflower is whispering about the Cherries, suggesting they're planning to create a stir by flaunting their bright colors and tempting sweetness."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Cherries</span>
+                <span class="thought">💬 "The Cherries are stirring up gossip about the Chana, saying they're secretly plotting to steal their thunder by boasting about their protein content and nutritional value."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Chana</span>
+                <span class="thought">💬 "There's gossip going around that the Chana is spreading rumors about the Chillis, accusing them of being too hot-headed and causing unnecessary drama in the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Chillis</span>
+                <span class="thought">💬 "The Chillis are whispering about the Coconuts, claiming they're planning to create chaos by spreading their fiery seeds and disrupting the peace in the garden."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Coconuts</span>
+                <span class="thought">💬 "Rumor has it that the Coconuts are gossiping about the Cotton, suggesting they're secretly planning to weave a web of competition and overshadow their contribution to the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Cotton</span>
+                <span class="thought">💬 "The Cotton is stirring up gossip about the Grapes, accusing them of being too sweet and attracting unwanted attention from pests and critters."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Grapes</span>
+                <span class="thought">💬 "Did you hear? The Grapes are spreading rumors about the Groundnut, suggesting they're planning to dig deep and unearth secrets that could shake the foundation of the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Groundnut</span>
+                <span class="thought">💬 "The Groundnut is whispering about the Guavas, claiming they're secretly plotting to spread their seeds and establish dominance over the garden's fertile soil."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Guavas</span>
+                <span class="thought">💬 "There's gossip going around that the Guavas are spreading rumors about the Lentils, accusing them of being too bland and failing to add flavor to the garden's culinary diversity."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Lentils</span>
+                <span class="thought">💬 "The Lentils are stirring up gossip about the Maize, suggesting they're planning to create a maze of confusion and lead other crops astray."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Maize</span>
+                <span class="thought">💬 "Rumor has it that the Maize is gossiping about the Mango, claiming they're planning to steal the spotlight with their golden hues and sweet aroma."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Mango</span>
+                <span class="thought">💬 "The Mango is spreading gossip about the Mustard, suggesting they're secretly plotting to spread their seeds and overshadow the garden with their vibrant blooms."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Mustard</span>
+                <span class="thought">💬 "Did you hear? The Mustard is whispering about the Ladyfinger, suggesting they're planning to stir up trouble by pointing fingers and assigning blame for the garden's shortcomings."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Ladyfinger</span>
+                <span class="thought">💬 "The Ladyfinger is stirring up gossip about the Onion, accusing them of being too pungent and causing tears among the other crops."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Onion</span>
+                <span class="thought">💬 "There's gossip going around that the Onion is spreading rumors about the Oranges, suggesting they're planning to peel away layers and reveal hidden truths about the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Oranges</span>
+                <span class="thought">💬 "The Oranges are whispering about the Papaya, claiming they're secretly plotting to paparazzi their way into the spotlight and steal the show."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Papaya</span>
+                <span class="thought">💬 "Rumor has it that the Papaya is gossiping about the Peas, suggesting they're planning to pod their way to popularity and leave other crops green with envy."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Peas</span>
+                <span class="thought">💬 "The Peas are spreading gossip about the Pomegranate, suggesting they're planning to pounce on opportunities and burst onto the scene with juicy revelations."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Pomegranate</span>
+                <span class="thought">💬 "Did you hear? The Pomegranate is stirring up gossip about the Potato, suggesting they're planning to plant seeds of doubt and dig up dirt on other crops."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Potato</span>
+                <span class="thought">💬 "The Potato is whispering about the Rice, claiming they're secretly plotting to rise above their station and become the starch of the garden."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Rice</span>
+                <span class="thought">💬 "There's gossip going around that the Rice is spreading rumors about the Ridge gourd, suggesting they're planning to climb to new heights and carve out their place in the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Ridge gourd</span>
+                <span class="thought">💬 "The Ridge gourd is gossiping about the Jowar, suggesting they're planning to sow seeds of discontent and harvest discord among the other crops."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Jowar</span>
+                <span class="thought">💬 "Rumor has it that the Jowar is spreading gossip about the Soybeans, suggesting they're planning to soy-cialize their way to success and become the talk of the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Soybeans</span>
+                <span class="thought">💬 "The Soybeans are stirring up gossip about the Sugarcane, suggesting they're planning to sweeten the deal and extract favors from other crops."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Sugarcane</span>
+                <span class="thought">💬 "Did you hear? The Sugarcane is whispering about the Sunflower, suggesting they're planning to shine bright and outgrow their competition in the garden."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Sunflower</span>
+                <span class="thought">💬 "The Sunflower is gossiping about the Tomatoes, suggesting they're planning to ripen early and become the apple of the garden's eye."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Tomatoes</span>
+                <span class="thought">💬 "There's gossip going around that the Tomatoes are spreading rumors about the Turmeric, suggesting they're planning to spice things up and add flavor to the garden's conversations."</span>
+            </div>
+        </div>
+        <div class="message right">
+            <div class="message-inner">
+                <span class="crop-name">Turmeric</span>
+                <span class="thought">💬 "The Turmeric is whispering about the Wheat, suggesting they're planning to rise to the occasion and become the breadwinner of the garden."</span>
+            </div>
+        </div>
+        <div class="message left">
+            <div class="message-inner">
+                <span class="crop-name">Wheat</span>
+                <span class="thought">💬 "Rumor has it that the Wheat is gossiping about the Alphonso Mangoes, suggesting they're planning to ripen faster and steal the spotlight from the king of fruits."</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to scroll to the bottom of the chat container
+        function scrollToBottom() {
+            var chatContainer = document.querySelector('.chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Simulate chat messages with a 2-second delay
+        var messages = document.querySelectorAll('.message');
+        var index = 0;
+        var interval = setInterval(function() {
+            messages[index].style.display = 'block';
+            scrollToBottom();
+            index++;
+            if (index === messages.length) {
+                clearInterval(interval);
+            }
+        }, 1000);
+
+        function speakLang() {
+            var welcomeMessage = new SpeechSynthesisUtterance();
+            welcomeMessage.text = "Crop gossips";
+            welcomeMessage.lang = "ge";
+            window.speechSynthesis.speak(welcomeMessage);
+          }
+          // Call the function when the page is reloaded
+          window.addEventListener('load', speakLang);
+    </script>
+</body>
+</html>

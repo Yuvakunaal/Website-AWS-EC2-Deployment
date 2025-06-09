@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="../assets/plant.png">
+  <title>Feedback</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(-135deg,#3bcae5,#50aceb,#658ef2,#7a71f8,#8f53fe);
+    }
+
+    .wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(-135deg, #c850c0, #4158d0);
+      clip-path: circle(25px at calc(100% - 45px) 45px);
+      transition: all 0.3s ease-in-out;
+    }
+
+    #active:checked ~ .wrapper {
+      clip-path: circle(75%);
+    }
+
+    .menu-btn {
+      position: fixed;
+      z-index: 2;
+      right: 20px;
+      top: 20px;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      background: linear-gradient(-135deg, #c850c0, #4158d0);
+      transition: all 0.3s ease-in-out;
+    }
+
+    #active:checked ~ .menu-btn {
+      background: #fff;
+      color: #4158d0;
+    }
+
+    #active:checked ~ .menu-btn i:before {
+      content: "🌾";
+    }
+
+    .wrapper ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      list-style: none;
+      text-align: center;
+    }
+
+    .wrapper ul li {
+      margin: 15px 0;
+    }
+
+    .wrapper ul li a {
+      color: none;
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 500;
+      padding: 5px 30px;
+      color: #fff;
+      position: relative;
+      line-height: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .wrapper ul li a:after {
+      position: absolute;
+      content: "";
+      background: #fff;
+      width: 100%;
+      height: 50px;
+      left: 0;
+      border-radius: 50px;
+      transform: scaleY(0);
+      z-index: -1;
+      transition: transform 0.3s ease;
+    }
+
+    .wrapper ul li a:hover:after {
+      transform: scaleY(1);
+    }
+
+    .wrapper ul li a:hover {
+      color: #4158d0;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .content {
+      text-align: center;
+      margin: 50px auto;
+    }
+    @font-face {
+      font-family: 'str';
+      src: url('../custom-font/str.ttf') format('truetype');
+    }
+    .content .title {
+      font-family:'str';
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .content h2 {
+      font-size: 18px;
+      max-width: 50vw;
+      margin: 20px auto;
+    }
+
+    .content p {
+      font-size: 35px;
+      font-weight: 600;
+      background: skyblue;
+      padding: 5rem;
+      max-width: 70vw;
+      margin: 30px auto;
+      border-radius: 8px;
+    }
+
+    .error {
+      background: tomato;
+    }
+
+    form {
+      max-width: 40vw;
+      margin: 50px auto;
+    }
+
+    form .block {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 1rem;
+    }
+
+    form .block label {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    form .block input,
+    form .block textarea {
+      padding: 10px;
+      font-size: 20px;
+      border: 1px solid #202020;
+      border-radius: 5px;
+    }
+
+    form .block input[type="tel"] {
+      padding: 10px;
+      font-size: 20px;
+      border: 1px solid #202020;
+      border-radius: 5px;
+    }
+
+    form .block select {
+      padding: 10px;
+      font-size: 20px;
+      border: 1px solid #202020;
+      border-radius: 5px;
+    }
+
+    form button {
+      padding: 10px 20px;
+      font-size: 20px;
+      background: linear-gradient(-135deg, #6a4c93,#1982c4,#8ac926,#ffca3a,#ff595e);
+      background-position-x: 0%;
+      background-size: 400%;
+      color: #efefef;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-position 0.6s ease;
+    }
+
+    form button:hover {
+      background-position-x: 100%;      
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="active" />
+		<label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+		<div class="wrapper">
+			<ul>
+				<li><a href="home1.html">Home</a></li>
+      <li><a href="crop1.html">Crops</a></li>
+      <li><a href="suggestion1.html">Suggestion</a></li>
+      <li><a href="gossip1.html">Crop Gossip</a></li>
+      <li><a href="feedback1.html">Feedback</a></li>
+      <li><a href="../index.html">Language</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<h1 class="title">FEEDBACK</h1>
+			<h2>
+				We would love to see your feeback on crop suggestions. It helps
+				us improve. We value your time and efforts.
+			</h2>
+			<form>
+				<div class="block">
+					<label for="name">Your Full Name</label>
+					<input type="tel" name="name" placeholder="Name" id="name" required/>
+				</div>
+				<div class="block">
+					<label for="feedback">Your Feedback</label>
+					<textarea name="feedback" id="feedback" cols="30" rows="10"></textarea>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+    <script type="module" async>
+			// If the user has already submitted feedback, redirect them to the feedback page
+			const form = document.querySelector("form");
+			if (localStorage.getItem("feedback")) {
+				const content = document.querySelector(".content");
+				content.removeChild(form);
+				const p = document.createElement("p");
+				p.textContent =
+					"You have already submitted feedback. Thank you for your time.";
+				content.appendChild(p);
+			}
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+			import {
+				getFirestore,
+				collection,
+				addDoc,
+        Timestamp
+			} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+			// Your web app's Firebase configuration
+			const firebaseConfig = {
+          apiKey: "AIzaSyDXza6_Z-H6EJI6-u0XiCyzfarmrDtqF98",
+          authDomain: "feedback-60eb3.firebaseapp.com",
+          projectId: "feedback-60eb3",
+          storageBucket: "feedback-60eb3.appspot.com",
+          messagingSenderId: "25033164422",
+          appId: "1:25033164422:web:c731e9933b1d9defceb307",
+          measurementId: "G-XJFH0354YC"
+        };
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+			const db = getFirestore(app);
+
+			form.addEventListener("submit", async (e) => {
+				e.preventDefault();
+				form.disabled = true;
+				const name = document.querySelector("#name").value;
+				const feedback = document.querySelector("#feedback").value;
+
+				try {
+					const docRef = await addDoc(collection(db, "feedback"), {
+						Name:name,
+						message:feedback,
+            timestamp: Timestamp.now()
+					});
+
+					localStorage.setItem("feedback", docRef.id);
+
+					form.reset();
+
+					const p = document.createElement("p");
+					p.textContent =
+						"Thank you for your suggestion. The feedback has been submitted successfully.";
+					const content = document.querySelector(".content");
+					content.removeChild(form);
+					content.appendChild(p);
+				} catch (e) {
+					const p = document.createElement("p");
+					p.textContent =
+						"There was an error submitting the feedback. Please try again later.";
+					p.classList.add("error");
+					const content = document.querySelector(".content");
+					content.removeChild(form);
+					content.appendChild(p);
+				}
+			});
+      function speakLang() {
+        var welcomeMessage = new SpeechSynthesisUtterance();
+        welcomeMessage.text = "Your Feedback";
+        welcomeMessage.lang = "en";
+        window.speechSynthesis.speak(welcomeMessage);
+      }
+      // Call the function when the page is reloaded
+      window.addEventListener('load', speakLang);
+		</script>
+</body>
+</html>

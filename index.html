@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="translate.png">
+<title>Language-भाषा-భాష</title>
+<style>
+  *{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,body{
+    height:100%;
+    touch-action: manipulation;
+  }
+  body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-family:"Roboto", sans-serif;
+    background-color: #f4f5f6;
+    font-size:14px;
+    color:#666666;
+    margin: 0;
+    background-image: url("/assets/pexels-francesco-ungaro-281260.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  .button{
+    position:relative;
+    padding:0;
+    width:160px;
+    height: 140px; /* Set height to auto to fit content */
+    border:4px solid #888888;
+    outline:none;
+    background-color:#f4f5f6;
+    border-radius: 40px;
+    transition: .13s ease-in-out;
+    cursor:pointer;
+  }
+  .button:hover{
+    box-shadow: 0px 0px 15px 0px rgba(39, 39, 39, 0.5); /* Add shadow on hover */
+  }
+  .button:active{
+    box-shadow:  -6px -15px 18px #b5b5b5, -6px -15px 16px #b5b5b5, -15px 0px 20px #b5b5b5, 3px 10px 12px rgba(195, 238, 24, 0.4);
+    transform: translateY(8px);
+  }
+  .button__content{
+    position:relative;
+    display:grid;
+    padding:20px;
+    width:100%;
+    height:100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    box-shadow:inset 0px -8px 0px #dddddd, 0px -8px 0px #f4f5f6;
+    border-radius: 40px;
+    transition: .13s ease-in-out; 
+  }
+  .button__icon{
+    position:relative;
+    display:flex;
+    transform:translate3d(0px, -4px, 0px);
+    grid-column:4;
+    align-self:start;
+    justify-self:end;
+    width:32px;
+    height:32px;
+    transition: .13s ease-in-out; 
+  }
+  .button__icon img{
+    width:32px;
+    height:32px;
+  }
+  .button__text{
+    position:relative;
+    transform:translate3d(0px, -4px, 0px);
+    margin:0;
+    align-self:end;
+    grid-column:1/5;
+    grid-row:2;
+    text-align:center;
+    font-size: 32px;
+    background-color: #888888;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    transition: .13s ease-in-out; 
+  }
+  @media (max-width: 600px) {
+    .button {
+      width: 120px;
+      height: auto; /* Set height to auto for responsiveness */
+    }
+    .button__icon img {
+      width: 24px;
+      height: 24px;
+    }
+    .button__text {
+      font-size: 24px;
+    }
+    .buttons {
+      gap: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+    <div class="buttons">
+  <button id="redirectButton1" class="button">
+    <div class="button__content">
+      <div class="button__icon">
+        <img src="/assets/watering.gif" alt="Plant Icon">
+      </div>
+      <p class="button__text">English</p>
+    </div>
+  </button>
+  <button id="redirectButton2" class="button">
+    <div class="button__content">
+      <div class="button__icon">
+        <img src="/assets/pottery.gif" alt="Plant Icon">
+      </div>
+      <p class="button__text">हिंदी</p>
+    </div>
+  </button>
+  <button id="redirectButton3" class="button">
+    <div class="button__content">
+      <div class="button__icon">
+        <img src="/assets/green-plant.gif" alt="Plant Icon">
+      </div>
+      <p class="button__text">తెలుగు</p>
+    </div>
+  </button>
+</div>
+
+<script>
+  // Function to redirect after 2 seconds
+  function redirect1() {
+    setTimeout(function() {
+      window.location.href = "english/home1.html";
+    }, 280); // 2 seconds
+  }
+  function redirect2() {
+    setTimeout(function() {
+      window.location.href = "hindi/home2.html";
+    }, 280); // 2 seconds
+  }
+  function redirect3() {
+    setTimeout(function() {
+      window.location.href = "telugu/home3.html";
+    }, 280); // 2 seconds
+  }
+
+  // Call the function when the button is clicked
+  document.getElementById("redirectButton1").addEventListener("click", redirect1);
+  document.getElementById("redirectButton2").addEventListener("click", redirect2);
+  document.getElementById("redirectButton3").addEventListener("click", redirect3);
+
+  function speakLang() {
+    var welcomeMessage = new SpeechSynthesisUtterance();
+    welcomeMessage.text = "Select Language";
+    welcomeMessage.lang = "en";
+    window.speechSynthesis.speak(welcomeMessage);
+  }
+  // Call the function when the page is reloaded
+  window.addEventListener('load', speakLang);
+</script>
+
+</body>
+</html>
