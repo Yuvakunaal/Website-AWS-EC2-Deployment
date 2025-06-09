@@ -30,7 +30,7 @@ This project demonstrates:
 ## 📁 Project Structure
 
 ```
-seasonal-crop-guide/
+Website-AWS-EC2-Deployment/
 ├── index.html
 ├── styles/
 │   └── style.css
