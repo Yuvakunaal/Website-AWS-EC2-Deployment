@@ -65,51 +65,48 @@ seasonal-crop-guide/
 ✅ Note: Your instance’s **IPv4 Public IP** is the live address for the website.
 
 ---
+## 2️⃣ Commands Used in this Project
 
-### 2️⃣ Connect to EC2 via SSH
 ```bash
-ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
-```
-
----
-
-### 3️⃣ Gain Root Access & Update System
-```bash
+# Switch to root user
 sudo su -
-apt update && apt upgrade -y
+
+# Update all packages
+yum update -y
+
+# Install Apache HTTP Server
+yum install -y httpd
+
+# Check Apache service status
+systemctl status httpd
+
+# Create a temporary directory
+mkdir temp
+
+# Navigate into the temp directory
+cd temp
+
+# Download zip file from GitHub or any URL
+wget <downloadable-zip-url>
+
+# Extract contents of the zip file
+unzip filename.zip
+
+# Navigate into extracted folder
+cd filename
+
+# List all files by last modified time
+ls -lrt
+
+# Move all files to Apache's web root
+mv * /var/www/html
+
+# Enable Apache to run on startup
+systemctl enable httpd
+
+# Start the Apache service
+systemctl start httpd
 ```
-
----
-
-### 4️⃣ Install Apache Web Server
-```bash
-apt install apache2 -y
-```
-
----
-
-### 5️⃣ Upload Project Files
-
-#### Option A: Using SCP
-```bash
-scp -i "your-key.pem" -r ./your-project/* ubuntu@<EC2-IP>:/var/www/html
-```
-
-#### Option B: Using GitHub
-```bash
-apt install git -y
-git clone https://github.com/your-username/your-repo.git
-cp -r your-repo/* /var/www/html/
-```
-
----
-
-### 6️⃣ Start and Enable Apache
-```bash
-systemctl start apache2
-systemctl enable apache2
-```
-
 ---
 
 🎉 **Now open your EC2 Public IPv4 address in a browser — your website is LIVE!**
