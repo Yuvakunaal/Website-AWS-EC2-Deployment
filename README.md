@@ -19,7 +19,7 @@ This project demonstrates:
 
 | Role              | Tools & Technologies             |
 |-------------------|----------------------------------|
-| 💻 Frontend       | HTML, CSS                        |
+| 💻 Frontend       | HTML, CSS, JS                    |
 | ☁️ Cloud Hosting  | Amazon EC2 (Ubuntu 20.04 LTS)    |
 | 🌐 Web Server     | Apache2                          |
 | 🔧 Version Control| Git, GitHub                      |
