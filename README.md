@@ -29,14 +29,15 @@ This project demonstrates:
 
 ## 📁 Project Structure
 
-```
+```bash
 Website-AWS-EC2-Deployment/
-├── index.html
-├── styles/
-│   └── style.css
-├── assets/
-│   └── images/
-└── README.md
+├── assets/               # Folder for images and visual assets
+├── custom-font/          # Folder for custom web fonts
+├── english/              # English version of crop guide content(html,js)
+├── hindi/                # Hindi version of crop guide content(html,js)
+├── telugu/               # Telugu version of crop guide content(html,js)
+├── index.html            # Main HTML file (homepage)
+└── README.md             # Project documentation
 ```
 
 ---
